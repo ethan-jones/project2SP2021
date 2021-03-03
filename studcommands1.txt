@@ -1,0 +1,65 @@
+GetLength
+IsEmpty
+DeleteItem 12
+PutItem 15 Eman
+PrintList
+PutItem 70 Anne
+PrintList
+PutItem 6 John
+PrintList
+PutItem 90 Dana
+PrintList
+PutItem 90 Soso
+PrintList
+IsFull
+GetLength
+GetAt 3
+GetAt 10
+GetAt 0
+DeleteItem 50
+DeleteItem 15
+PrintList
+DeleteItem 100
+PutItem 100 Mike
+DeleteItem 100
+PrintList
+DeleteItem 6
+PrintList
+MakeEmpty
+IsEmpty
+GetLength
+DeleteItem 90
+PutItem 7 Suzan
+PutItem 6 Mimi
+PutItem 5 Sara
+PrintList
+Merge
+
+10 Mark
+20 Peter
+30 Brad
+40 Zak
+
+10 Mark
+20 Peter
+30 Brad
+40 Zak
+
+20 Peter
+40 Brad
+50 Zak
+10 Rama
+30 Tala
+60 Matthew
+70 Mira
+
+20 Peter
+40 Brad
+50 Zak
+10 Rama
+20 Peter
+30 Tala
+40 Brad
+50 Zak
+
+Quit

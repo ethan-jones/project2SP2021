@@ -1,0 +1,105 @@
+Testing getLenth():
+0
+Testing isEmpty():
+list is empty
+Testing deleteItem(12):
+List is empty. EmtpyList exception thrown.
+Testing putItem(15  Eman):
+Printing the list:
+List Items : 15  Eman->NULL
+
+Testing putItem(70  Anne):
+Printing the list:
+List Items : 15  Eman->70  Anne->NULL
+
+Testing putItem(6  John):
+Printing the list:
+List Items : 6  John->15  Eman->70  Anne->NULL
+
+Testing putItem(90  Dana):
+Printing the list:
+List Items : 6  John->15  Eman->70  Anne->90  Dana->NULL
+
+Testing putItem(90  Soso):
+Putting item failed. DuplicateItem exception thrown.
+Printing the list:
+List Items : 6  John->15  Eman->70  Anne->90  Dana->NULL
+
+Testing isFull():
+List is not full
+Testing getLenth():
+4
+Testing getAT(3):
+Value stored in node 3 is 70  Anne
+Testing getAT(10):
+Value stored in node 10 is index is out of range. Exception thrown.
+Testing getAT(0):
+Value stored in node 0 is index is out of range. Exception thrown.
+Testing deleteItem(50):
+Item to be deleted is not in the list. Exception thrown.
+Testing deleteItem(15):
+Printing the list:
+List Items : 6  John->70  Anne->90  Dana->NULL
+
+Testing deleteItem(100):
+Item to be deleted is not in the list. Exception thrown.
+Testing putItem(100  Mike):
+Testing deleteItem(100):
+Printing the list:
+List Items : 6  John->70  Anne->90  Dana->NULL
+
+Testing deleteItem(6):
+Printing the list:
+List Items : 70  Anne->90  Dana->NULL
+
+Testing makeEmpty():
+Testing isEmpty():
+list is empty
+Testing getLenth():
+0
+Testing deleteItem(90):
+List is empty. EmtpyList exception thrown.
+Testing putItem(7  Suzan):
+Testing putItem(6  Mimi):
+Testing putItem(5  Sara):
+Printing the list:
+List Items : 5  Sara->6  Mimi->7  Suzan->NULL
+
+TESTING MERGE:
+Test case 1: Merging two empty lists
+Expected output: Both lists are empty
+list1 after merge: List Items : NULL
+list2 after merge: List Items : NULL
+
+Test case 2: merging the empty list with 10->20->30->40 
+expected output 10 -> 20 -> 30 -> 40
+Actual output:
+List1 after the merge
+List Items : 10  Mark->20  Peter->30  Brad->40  Zak->NULL
+List2 after the merge, Expected empty.
+List Items : NULL
+
+Test case 3: Output of merging 10->20->30->40 with an empty list 
+expected output 10-> 20 -> 30 -> 40
+Actual output:
+list after the merge
+List Items : 10  Mark->20  Peter->30  Brad->40  Zak->NULL
+Other list after the merge, Expected empty.
+other list Actual
+List Items : NULL
+
+Test case 4: Output of merging two lists 20->40->50 WITH 10->30->60->70
+expected output 10->20->30->40->50->60->70->NULL
+Actual output:
+List after the merge
+List Items : 10  Rama->20  Peter->30  Tala->40  Brad->50  Zak->60  Matthew->70  Mira->NULL
+Other list after the merge, expected empty
+List Items : NULL
+
+Test case 5: Remove Duplicates test, Output of merging two lists 20->40->50 WITH 10->20->30->40->50
+expected output 10->20->30->40->50->NULL
+Actual output:
+List after the merge
+List Items : 10  Rama->20  Peter->30  Tala->40  Brad->50  Zak->NULL
+Other list after the merge
+List Items : NULL
