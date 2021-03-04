@@ -161,19 +161,29 @@ template < class ItemType > ItemType SortedList < ItemType >::getAt(int index){
   
 template < class ItemType > void SortedList < ItemType >::merge(SortedList& otherList){
   Node<ItemType>* temp = listData;
+  Node<ItemType>* temp2;
   Node<ItemType>* predecessor;
+  Node<ItemType>* predecessor2;
   for (int i = 0; i < Length; i++) {
+    while (findItem(otherList.listData->info, predecessor2) == true) {
+      temp2 = otherList.listData;
+      otherList.listData = temp2->next;
+      delete temp2;
+    }
     if (temp > otherList.listData && otherList.listData != NULL) {
       if (i == 0) {
 	listData = otherList.listData;
 	otherList.listData = otherList.listData->next;
 	listData->next = temp;
+	temp = listData;
       }
       else {
 	predecessor->next = otherList.listData;
 	otherList.listData = otherList.listData->next;
 	predecessor->next->next = temp;
+	temp = predecessor->next;
       }
+      Length++;
       i--;
     }
     else {
@@ -181,8 +191,7 @@ template < class ItemType > void SortedList < ItemType >::merge(SortedList& othe
       temp = temp->next;
     }
   }
-  Length += otherList.Length;
-  otherList.makeEmpty();
+  otherList.Length = 0;
 }
 
 template < class ItemType > bool SortedList < ItemType >::findItem(ItemType item, Node<ItemType>*& predecessor) {
