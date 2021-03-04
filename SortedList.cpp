@@ -52,18 +52,18 @@ template < class ItemType > bool SortedList < ItemType >::isEmpty() const
 
 template < class ItemType > bool SortedList < ItemType >::isFull() const
 {
-  ItemType* location;
+  Node<ItemType> location;
   // Try adding a new node, if successful, there
   // is room for more nodes so list is NOT full
   try
     {
-      location = new ItemType;
+      location = new Node<ItemType>;
       delete location;
       return false;
     }
   // If adding a new node was unsuccessful,
   // the list is full
-  catch(std::bad_alloc)
+  catch(bad_alloc e)
     {
       return true;
     }
@@ -106,7 +106,7 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
 {
   if (isEmpty() == true) {
     throw EmptyList();
-  }
+  } else {
   Node<ItemType>* predecessor;
   if (findItem(item, predecessor) == false) {
     throw DeletingMissingItem();
@@ -124,6 +124,7 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
     delete temp;
     delete predecessor;
     Length--;
+  }
   }
 }
 

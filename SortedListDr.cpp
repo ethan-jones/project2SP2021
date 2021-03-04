@@ -43,7 +43,7 @@ void testIntegersList()
 	string command;
 	ifstream inFile;
 	ofstream outFile;
-	inFile.open("intcommands.txt");
+	inFile.open("intcommands1.txt");
 	outFile.open("outFile.txt");
 	int number;
 
@@ -256,7 +256,7 @@ void testStudentsList()
 	string command;
 	ifstream sinFile;
 	ofstream soutFile;
-	sinFile.open("studcommands.txt");
+	sinFile.open("studcommands1.txt");
 	soutFile.open("soutFile.txt");
 	Student s(0, " ");
 	int id;

@@ -7,6 +7,8 @@ using namespace std;
 
 class Student {
 public:
+  int id;
+  string name;
   Student();
   Student(int i, string j);
   int getID();
@@ -18,10 +20,6 @@ public:
   bool operator<(const Student& y);
   friend ostream& operator<<(ostream& os, const Student& s);
   friend istream& operator>>(istream& is, Student& s);
-  
-private:
-  int id;
-  string name;
 };
 
 #endif
