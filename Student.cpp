@@ -1,34 +1,49 @@
 #include "Student.h"
 
 Student::Student() {
-  studentID = 0;
-  studentName = "N/A";
+  id = 0;
+  name = "N/A";
 }
 
 Student::Student(int newId, string newName) {
-  studentID = newId;
-  studentName = newName;
+  id = newId;
+  name = newName;
 }
 
 string Student::getName() {
-  return studentName;
+  return name;
 }
 
 int Student::getID() {
-  return studentID;
+  return id;
 }
 
 void Student::setName(string newName) {
-  studentName = newName;
+  name = newName;
 }
 
 void Student::setID(int newID) {
-  studentID = newID;
+  id = newID;
 }
 
 bool Student::operator==(const Student& y) {
-  if (studentID == y.studentID && studentName == y.studentName) {
+  if (id == y.id) {
     return true;
   }
   return false;
 }
+
+bool Student::operator>(const Student& y) {
+  if (id > y.id) {
+    return true;
+  }
+  return false;
+}
+
+bool Student::operator<(const Student& y) {
+  if (id < y.id) {
+    return true;
+  }
+  return false;
+}
+
