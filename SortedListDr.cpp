@@ -66,7 +66,6 @@ void testIntegersList()
 			}
 			else if (command == "PutItem")
 			{
-			  cout << "test";
 				inFile >> number;
 				outFile << "Testing putItem("<<number<<"):\n";
 				list.putItem(number);
@@ -257,7 +256,7 @@ void testStudentsList()
 	string command;
 	ifstream sinFile;
 	ofstream soutFile;
-	sinFile.open("studcommands1.txt");
+	sinFile.open("studcommands.txt");
 	soutFile.open("soutFile.txt");
 	Student s(0, " ");
 	int id;

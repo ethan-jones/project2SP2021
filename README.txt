@@ -1,6 +1,6 @@
 # project2SP2021
 GREETINGS, our group name is "The Pogging Gourds". The group
-members that worked to develop this program is.
+members that worked to develop this program are Ethan Jones, William Brown, Dwight Coles.
 This is a project that reads input from a text file, manilupates the text
 with many functions from both SortedList and Student,
 then puts the content into a list for the user, then prints to an outfile.
