@@ -163,7 +163,7 @@ template < class ItemType > void SortedList < ItemType >::merge(SortedList& othe
     if (otherList.listData < temp) {
       if (temp == listData) {
 	temp2 = otherList.listData;
-	otherlist.listData = otherList.listData->next;
+	otherList.listData = otherList.listData->next;
 	temp2->next = temp;
 	listData = temp2;
 	temp = temp2;
