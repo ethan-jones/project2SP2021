@@ -52,7 +52,7 @@ template < class ItemType > bool SortedList < ItemType >::isEmpty() const
 
 template < class ItemType > bool SortedList < ItemType >::isFull() const
 {
-  Node<ItemType> location;
+  Node<ItemType>* location;
   // Try adding a new node, if successful, there
   // is room for more nodes so list is NOT full
   try
@@ -63,7 +63,7 @@ template < class ItemType > bool SortedList < ItemType >::isFull() const
     }
   // If adding a new node was unsuccessful,
   // the list is full
-  catch(bad_alloc e)
+  catch(bad_alloc)
     {
       return true;
     }
@@ -79,7 +79,7 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
     throw DuplicateItem();
   }
   Node<ItemType>* temp = listData;
-  Node<ItemType>* newItem;
+  Node<ItemType>* newItem = new Node<ItemType>;
   newItem->info = item;
   for (int i = 0; i < Length; i++) {
     if (temp->info > item || temp == NULL) {

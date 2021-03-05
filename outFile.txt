@@ -1,6 +1,0 @@
-Testing getLenth():
-0
-Testing isEmpty():
-list is empty
-Testing deleteItem(12):
-List is empty. EmtpyList exception thrown.

@@ -66,6 +66,7 @@ void testIntegersList()
 			}
 			else if (command == "PutItem")
 			{
+			  cout << "test";
 				inFile >> number;
 				outFile << "Testing putItem("<<number<<"):\n";
 				list.putItem(number);
