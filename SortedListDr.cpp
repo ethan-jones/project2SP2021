@@ -43,7 +43,7 @@ void testIntegersList()
 	string command;
 	ifstream inFile;
 	ofstream outFile;
-	inFile.open("intcommands.txt");
+	inFile.open("intcommands1.txt");
 	outFile.open("outFile.txt");
 	int number;
 
