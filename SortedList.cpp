@@ -69,27 +69,37 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
   if (findItem(item, predecessor) == true) {
     throw DuplicateItem(); 
   }
-//   Node<ItemType>* temp = listData;
-//   Node<ItemType>* newItem = new Node<ItemType>;
-//   for (int i = 0; i < Length+1; i++) {
-//     if (temp->info > item || temp == NULL) {
-//       if (i == 0) {
-//         newItem->next = listData;
-//         listData = newItem;
-//         delete predecessor;
-//         Length++;
-//         return;
-//       }
-//       else {
-//         newItem->next = temp;
-//         predecessor->next = newItem;
-//         Length++;
-//         return;
-//       }
-//     }
-//     predecessor = temp;
-//     temp = temp->next;
-//   }
+  /*
+   Node<ItemType>* temp = listData;
+   Node<ItemType>* newItem = new Node<ItemType>;
+   for (int i = 0; i < Length; i++) {
+       if (temp->info > item || temp == NULL) {
+         if (i == 0) {
+           newItem->next = listData;
+           listData = newItem;
+           Length++;
+           return;
+         }
+         else {
+           newItem->next = temp;
+           predecessor->next = newItem;
+           Length++;
+           return;
+         }
+       }
+       predecessor = temp;
+       temp = temp->next;
+   }
+  */
+  /*
+  Node<ItemType>* temp = listData;
+  Node<ItemType>* newItem = new Node<ItemType>;
+  for (int i = 0; i < Length+1; i++) {
+    
+  }
+  */
+
+  
                             // Node<ItemType>* location;
                             // Node<ItemType>* temp = listData;
                             // location =new Node<ItemType>;
@@ -106,13 +116,19 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
                             // listData= location;
                             // Length++;
                             // }
-                            
+  
     Node<ItemType>* location;
     location = new Node<ItemType>;
-    location->info=item;
-    location->next=listData;
-    listData= location;
-    Length++;
+    Node<ItemType>* newItem = new Node<ItemType>;
+    predecessor = listData;
+    while ()
+    if (predecessor == listData) {
+      location->info=item;
+      location->next=listData;
+      listData = location;
+      Length++;
+    }
+   
 }
 
 template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType item)

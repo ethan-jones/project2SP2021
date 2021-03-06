@@ -6,44 +6,46 @@ Testing deleteItem(12):
 List is empty. EmtpyList exception thrown.
 Testing putItem(15):
 Printing the list:
-15->NULL
+NULL
 Testing putItem(70):
 Printing the list:
-70->15->NULL
+NULL
 Testing putItem(6):
 Printing the list:
-6->70->15->NULL
+NULL
 Testing putItem(90):
 Printing the list:
-90->6->70->15->NULL
+NULL
 Testing putItem(90):
-Putting item failed. DuplicateItem exception thrown.
 Printing the list:
-90->6->70->15->NULL
+NULL
 Testing isFull():
 List is not full
 Testing getLenth():
-4
+0
 Testing getAT(3):
-Value stored in node 3 is 70
+Value stored in node 3 is index is out of range. Exception thrown.
 Testing getAT(10):
 Value stored in node 10 is index is out of range. Exception thrown.
 Testing getAT(0):
 Value stored in node 0 is index is out of range. Exception thrown.
 Testing deleteItem(50):
-Item to be deleted is not in the list. Exception thrown.
+List is empty. EmtpyList exception thrown.
 Testing deleteItem(15):
+List is empty. EmtpyList exception thrown.
 Printing the list:
-90->6->70->NULL
+NULL
 Testing deleteItem(100):
-Item to be deleted is not in the list. Exception thrown.
+List is empty. EmtpyList exception thrown.
 Testing putItem(100):
 Testing deleteItem(100):
+List is empty. EmtpyList exception thrown.
 Printing the list:
-90->6->70->NULL
+NULL
 Testing deleteItem(6):
+List is empty. EmtpyList exception thrown.
 Printing the list:
-90->70->NULL
+NULL
 Testing makeEmpty():
 Testing isEmpty():
 list is empty
