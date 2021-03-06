@@ -25,7 +25,7 @@ void Student::setName(string newName) {
 void Student::setID(int newID) {
   id = newID;
 }
-
+/*
 bool Student::operator==(const Student& y) {
   if (id == y.id) {
     return true;
@@ -46,4 +46,5 @@ bool Student::operator<(const Student& y) {
   }
   return false;
 }
+*/
 

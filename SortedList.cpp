@@ -69,27 +69,50 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
   if (findItem(item, predecessor) == true) {
     throw DuplicateItem(); 
   }
-  Node<ItemType>* temp = listData;
-  Node<ItemType>* newItem = new Node<ItemType>;
-  for (int i = 0; i < Length; i++) {
-    if (temp->info > item || temp == NULL) {
-      if (i == 0) {
-        newItem->next = listData;
-        listData = newItem;
-        delete predecessor;
-        Length++;
-        return;
-      }
-      else {
-        newItem->next = temp;
-        predecessor->next = newItem;
-        Length++;
-        return;
-      }
-    }
-    predecessor = temp;
-    temp = temp->next;
-  }
+//   Node<ItemType>* temp = listData;
+//   Node<ItemType>* newItem = new Node<ItemType>;
+//   for (int i = 0; i < Length+1; i++) {
+//     if (temp->info > item || temp == NULL) {
+//       if (i == 0) {
+//         newItem->next = listData;
+//         listData = newItem;
+//         delete predecessor;
+//         Length++;
+//         return;
+//       }
+//       else {
+//         newItem->next = temp;
+//         predecessor->next = newItem;
+//         Length++;
+//         return;
+//       }
+//     }
+//     predecessor = temp;
+//     temp = temp->next;
+//   }
+                            // Node<ItemType>* location;
+                            // Node<ItemType>* temp = listData;
+                            // location =new Node<ItemType>;
+                            // location=listData;
+                            // location->next->info=item;
+                            // listData= location;
+                            // Length++;
+                            // if (temp->info == NULL){
+                            //     location = listData;
+                            // }
+                            // else {
+                            //     location->info=item;
+                            // location->next=listData;
+                            // listData= location;
+                            // Length++;
+                            // }
+                            
+    Node<ItemType>* location;
+    location = new Node<ItemType>;
+    location->info=item;
+    location->next=listData;
+    listData= location;
+    Length++;
 }
 
 template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType item)
@@ -101,20 +124,39 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
     if (findItem(item, predecessor) == false) {
       throw DeletingMissingItem(); 
     }
-    else if (predecessor == NULL) {
-      Node<ItemType>* temp = listData;
-      listData = listData->next;
-      delete temp;
-      delete predecessor;
-      Length--;
+    // else if (predecessor == NULL) {
+    //   Node<ItemType>* temp = listData;
+    //   listData = listData->next;
+    //   delete temp;
+    //   delete predecessor;
+    //   Length--;
+    // }
+    // else {
+    //   Node<ItemType>* temp = predecessor->next;
+    //   predecessor->next = temp->next;
+    //   delete temp;
+    //   delete predecessor;
+    //   Length--;
+    // }
+    Node<ItemType>* location=listData;
+    Node<ItemType>* tempLocation;
+    if(item==(location->info))
+    {
+        tempLocation=location;
+        listData=listData->next;
     }
-    else {
-      Node<ItemType>* temp = predecessor->next;
-      predecessor->next = temp->next;
-      delete temp;
-      delete predecessor;
-      Length--;
+    else{
+        while(item!=location->next->info)
+        {
+            location=location->next;
+        }
+        //delete node at location->next
+        tempLocation=location->next;
+        location->next=location->next->next;
+
     }
+    delete tempLocation;
+    Length--;
   } 
 }
 
@@ -151,15 +193,16 @@ template < class ItemType > void SortedList < ItemType >::merge(SortedList& othe
   Node<ItemType>* temp2;
   Node<ItemType>* predecessor;
   Node<ItemType>* predecessor2;
-  while (otherList.listData != NULL) {
+  //while (otherList.listData != NULL) 
+  do {
     while (findItem(otherList.listData->info, predecessor2) == true) {
       temp2 = otherList.listData;
-      otherList.listData = otherList.listdata->next;
+      otherList.listData = otherList.listData->next;
       delete temp2;
     }
-    if (otherList.listData->info == NULL) {
-      break;
-    }
+   // if (otherList.listData->info == NULL) {
+   //   break;
+   // }
     if (otherList.listData < temp) {
       if (temp == listData) {
 	temp2 = otherList.listData;
@@ -183,8 +226,8 @@ template < class ItemType > void SortedList < ItemType >::merge(SortedList& othe
       predecessor = temp;
       temp = temp->next;
     }
-  }
-}
+  } while (otherList.listData != NULL);
+} 
 
 template < class ItemType > bool SortedList < ItemType >::findItem(ItemType item, Node<ItemType>*& predecessor)
 {
