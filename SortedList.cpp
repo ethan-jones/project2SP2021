@@ -19,8 +19,8 @@ template < class ItemType > SortedList < ItemType >::~SortedList()
     delete listData;
     listData = listData->next;
   }
-  delete listData;
   delete tempPtr;
+  delete listData;
 }
 
 template < class ItemType > void SortedList < ItemType >::makeEmpty() 
@@ -55,7 +55,7 @@ template < class ItemType > bool SortedList < ItemType >::isFull() const
     delete location;
     return false;
   }
-  catch(bad_alloc e) {
+  catch(bad_alloc) {
      return true;
   }
 }
@@ -69,37 +69,27 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
   if (findItem(item, predecessor) == true) {
     throw DuplicateItem(); 
   }
-  /*
-   Node<ItemType>* temp = listData;
-   Node<ItemType>* newItem = new Node<ItemType>;
-   for (int i = 0; i < Length; i++) {
-       if (temp->info > item || temp == NULL) {
-         if (i == 0) {
-           newItem->next = listData;
-           listData = newItem;
-           Length++;
-           return;
-         }
-         else {
-           newItem->next = temp;
-           predecessor->next = newItem;
-           Length++;
-           return;
-         }
-       }
-       predecessor = temp;
-       temp = temp->next;
-   }
-  */
-  /*
-  Node<ItemType>* temp = listData;
-  Node<ItemType>* newItem = new Node<ItemType>;
-  for (int i = 0; i < Length+1; i++) {
-    
-  }
-  */
-
-  
+//   Node<ItemType>* temp = listData;
+//   Node<ItemType>* newItem = new Node<ItemType>;
+//   for (int i = 0; i < Length+1; i++) {
+//     if (temp->info > item || temp == NULL) {
+//       if (i == 0) {
+//         newItem->next = listData;
+//         listData = newItem;
+//         delete predecessor;
+//         Length++;
+//         return;
+//       }
+//       else {
+//         newItem->next = temp;
+//         predecessor->next = newItem;
+//         Length++;
+//         return;
+//       }
+//     }
+//     predecessor = temp;
+//     temp = temp->next;
+//   }
                             // Node<ItemType>* location;
                             // Node<ItemType>* temp = listData;
                             // location =new Node<ItemType>;
@@ -116,7 +106,7 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
                             // listData= location;
                             // Length++;
                             // }
-  
+                            
     Node<ItemType>* location;
     location = new Node<ItemType>;
     predecessor = listData;
@@ -132,7 +122,7 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
 	} else if (listData->info > item) {
 		location->info = item;
 		location->next = listData;
-		listData = node;
+		listData = location;
 		found = true;
 		Length++;
 	} else if (node->info > item) {
@@ -151,7 +141,6 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
 		predecessor = node;
 		node = node->next;
 	}
-	
     }
 }
 
@@ -202,18 +191,15 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
 
 template < class ItemType > int SortedList < ItemType >::getLength() const
 {
-  cout << "test";
   return Length;
 }
 
 template < class ItemType > void SortedList < ItemType >::printList(ofstream& outFile)
 {
-  if (Length != 0) {
-    Node<ItemType>* temp = listData;
-    for (int i = 0; i < Length; i++) {
-      outFile << temp->info << "->";
-      temp = temp->next;
-    }
+  Node<ItemType>* temp = listData;
+  for (int i = 0; i < Length; i++) {
+    outFile << temp->info << "->";
+    temp = temp->next;
   }
   outFile << "NULL";
 }
