@@ -107,11 +107,11 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
                             // Length++;
                             // }
                             
-    Node<ItemType>* location;
-    location = new Node<ItemType>;
-    predecessor = listData;
-    Node<ItemType>* node = listData;
-    bool found = false;
+  Node<ItemType>* location;
+  location = new Node<ItemType>;
+  predecessor = listData;
+  Node<ItemType>* node = listData;
+  bool found = false;
     while (found == false) {
     	if (Length == 0) {
 		location->info=item;
@@ -218,44 +218,46 @@ template < class ItemType > ItemType SortedList < ItemType >::getAt(int index)
   
 template < class ItemType > void SortedList < ItemType >::merge(SortedList& otherList)
 {
-  Node<ItemType>* temp = listData;
+  Node<ItemType>* predecessor = listData;
+  Node<ItemType>* node = listData;
   Node<ItemType>* temp2;
-  Node<ItemType>* predecessor;
-  Node<ItemType>* predecessor2;
-  //while (otherList.listData != NULL) 
-  do {
-    while (findItem(otherList.listData->info, predecessor2) == true) {
+  while (otherList.isEmpty() == false) {
+    if (node->info == otherList.listData->info) {
       temp2 = otherList.listData;
       otherList.listData = otherList.listData->next;
       delete temp2;
+      otherList.Length--;
+    } else if (Length == 0) {
+      listData = otherList.listData;
+      Length = otherList.Length;
+      otherList.listData = NULL;
+      otherList.Length = 0;
+    } else if (listData->info > otherList.listData->info) {
+      listData = otherList.listData;
+      otherList.listData = otherList.listData->next;
+      otherList.Length--;
+      Length++;
+      listData->next = node;
+      predecessor = listData;
+    } else if (node->info > otherList.listData->info) {
+      predecessor->next = otherList.listData;
+      otherList.listData = otherList.listData->next;
+      otherList.Length--;
+      Length++;
+      predecessor->next->next = node;
+      predecessor = predecessor->next;
+    } else if (node->next == NULL) {
+      node->next = otherList.listData;
+      otherList.listData = otherList.listData->next;
+      otherList.Length--;
+      Length++;
+      node = node->next;
+      node->next = NULL;
+    } else {
+      predecessor = node;
+      node = node->next;
     }
-   // if (otherList.listData->info == NULL) {
-   //   break;
-   // }
-    if (otherList.listData < temp) {
-      if (temp == listData) {
-	temp2 = otherList.listData;
-	otherList.listData = otherList.listData->next;
-	temp2->next = temp;
-	listData = temp2;
-	temp = temp2;
-	predecessor = listData;
-	Length++;
-      }
-      else {
-	temp2 = otherList.listData;
-	otherList.listData = otherList.listData->next;
-	predecessor->next = temp2;
-	temp2->next = temp;
-	predecessor = temp2;
-	Length++;
-      }
-    }
-    else {
-      predecessor = temp;
-      temp = temp->next;
-    }
-  } while (otherList.listData != NULL);
+  }
 } 
 
 template < class ItemType > bool SortedList < ItemType >::findItem(ItemType item, Node<ItemType>*& predecessor)
