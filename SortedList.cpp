@@ -119,16 +119,40 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
   
     Node<ItemType>* location;
     location = new Node<ItemType>;
-    Node<ItemType>* newItem = new Node<ItemType>;
     predecessor = listData;
-    while ()
-    if (predecessor == listData) {
-      location->info=item;
-      location->next=listData;
-      listData = location;
-      Length++;
+    Node<ItemType>* node = listData;
+    bool found = false;
+    while (found == false) {
+    	if (listData == NULL) {
+		location->info=item;
+     		location->next=listData;
+      		listData = location;
+      		Length++;
+		found = true;
+	} else if (listData->info > item) {
+		location->info = item;
+		location->next = listData;
+		listData = node;
+		found = true;
+		Length++;
+	} else if (node->info > item) {
+		location->info = item;
+		location->next = node;
+		predecessor->next = location;
+		found = true;
+		Length++;
+	} else if (node->next == NULL) {
+		location->info = item;
+		location->next = NULL;
+		node->next = location;
+		Length++;
+		found == true;
+	} else {
+		predecessor = node;
+		node = node->next;
+	}
+	
     }
-   
 }
 
 template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType item)
