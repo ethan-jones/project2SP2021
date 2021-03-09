@@ -19,5 +19,11 @@ public:
   friend ostream& operator<<(ostream& os, const Student& s);
   friend istream& operator>>(istream& is, Student& s);
 
+  bool operator != (const Student &s2);
+  bool operator == (const Student &s2);
+  bool operator < (const Student &s2);
+  bool operator > (const Student &s2);
+  
+};
 #endif
   

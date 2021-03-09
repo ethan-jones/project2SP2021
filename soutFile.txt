@@ -83,5 +83,5 @@ Test case 5: Remove Duplicates test, Output of merging two lists 20->40->50 WITH
 expected output 10->20->30->40->50->NULL
 Actual output:
 List after the merge
-10  Rama->20  Peter->20  Peter->30  Tala->40  Brad->40  Brad->50  Zak->50  Zak->NULLOther list after the merge
+10  Rama->20  Peter->30  Tala->40  Brad->50  Zak->NULLOther list after the merge
 NULL
