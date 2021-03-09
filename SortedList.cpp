@@ -11,16 +11,13 @@ template < class ItemType > SortedList < ItemType >::SortedList()
 template < class ItemType > SortedList < ItemType >::~SortedList()
 {
   Node<ItemType>* tempPtr;
-  
-  // Loop removes all nodes from list
-  // deallocating space for each one
-  while(listData != NULL) {
+
+  while(listData != NULL)
+  {
     tempPtr = listData;
-    delete listData;
     listData = listData->next;
+    delete tempPtr;
   }
-  delete tempPtr;
-  delete listData;
 }
 
 template < class ItemType > void SortedList < ItemType >::makeEmpty() 
@@ -55,7 +52,7 @@ template < class ItemType > bool SortedList < ItemType >::isFull() const
     delete location;
     return false;
   }
-  catch(bad_alloc) {
+  catch(bad_alloc exception) {
      return true;
   }
 }
@@ -68,45 +65,7 @@ template < class ItemType > void SortedList < ItemType >::putItem(ItemType item)
   Node<ItemType>* predecessor;
   if (findItem(item, predecessor) == true) {
     throw DuplicateItem(); 
-  }
-//   Node<ItemType>* temp = listData;
-//   Node<ItemType>* newItem = new Node<ItemType>;
-//   for (int i = 0; i < Length+1; i++) {
-//     if (temp->info > item || temp == NULL) {
-//       if (i == 0) {
-//         newItem->next = listData;
-//         listData = newItem;
-//         delete predecessor;
-//         Length++;
-//         return;
-//       }
-//       else {
-//         newItem->next = temp;
-//         predecessor->next = newItem;
-//         Length++;
-//         return;
-//       }
-//     }
-//     predecessor = temp;
-//     temp = temp->next;
-//   }
-                            // Node<ItemType>* location;
-                            // Node<ItemType>* temp = listData;
-                            // location =new Node<ItemType>;
-                            // location=listData;
-                            // location->next->info=item;
-                            // listData= location;
-                            // Length++;
-                            // if (temp->info == NULL){
-                            //     location = listData;
-                            // }
-                            // else {
-                            //     location->info=item;
-                            // location->next=listData;
-                            // listData= location;
-                            // Length++;
-                            // }
-                            
+  }                         
   Node<ItemType>* location;
   location = new Node<ItemType>;
   predecessor = listData;
@@ -153,20 +112,6 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
     if (findItem(item, predecessor) == false) {
       throw DeletingMissingItem(); 
     }
-    // else if (predecessor == NULL) {
-    //   Node<ItemType>* temp = listData;
-    //   listData = listData->next;
-    //   delete temp;
-    //   delete predecessor;
-    //   Length--;
-    // }
-    // else {
-    //   Node<ItemType>* temp = predecessor->next;
-    //   predecessor->next = temp->next;
-    //   delete temp;
-    //   delete predecessor;
-    //   Length--;
-    // }
     Node<ItemType>* location=listData;
     Node<ItemType>* tempLocation;
     if(item==(location->info))
@@ -179,7 +124,7 @@ template < class ItemType > void SortedList < ItemType >::deleteItem(ItemType it
         {
             location=location->next;
         }
-        //delete node at location->next
+        
         tempLocation=location->next;
         location->next=location->next->next;
 
@@ -218,45 +163,42 @@ template < class ItemType > ItemType SortedList < ItemType >::getAt(int index)
   
 template < class ItemType > void SortedList < ItemType >::merge(SortedList& otherList)
 {
-  Node<ItemType>* predecessor = listData;
   Node<ItemType>* node = listData;
-  Node<ItemType>* temp2;
-  while (otherList.isEmpty() == false) {
-    if (node->info == otherList.listData->info) {
-      temp2 = otherList.listData;
+  Node<ItemType>* predecessor = listData;
+  while (node != NULL && otherList.listData != NULL) {
+    Node<ItemType>* temp2 = otherList.listData;
+    if (node->info > temp2->info) {
+      if (node != listData) {
+	predecessor->next = temp2;
+      } 
       otherList.listData = otherList.listData->next;
-      delete temp2;
-      otherList.Length--;
-    } else if (Length == 0) {
-      listData = otherList.listData;
-      Length = otherList.Length;
-      otherList.listData = NULL;
-      otherList.Length = 0;
-    } else if (listData->info > otherList.listData->info) {
-      listData = otherList.listData;
-      otherList.listData = otherList.listData->next;
+      temp2->next = node;
+      predecessor = temp2;
       otherList.Length--;
       Length++;
-      listData->next = node;
-      predecessor = listData;
-    } else if (node->info > otherList.listData->info) {
-      predecessor->next = otherList.listData;
-      otherList.listData = otherList.listData->next;
-      otherList.Length--;
-      Length++;
-      predecessor->next->next = node;
-      predecessor = predecessor->next;
-    } else if (node->next == NULL) {
-      node->next = otherList.listData;
-      otherList.listData = otherList.listData->next;
-      otherList.Length--;
-      Length++;
-      node = node->next;
-      node->next = NULL;
-    } else {
+      if (node == listData) {
+	listData = predecessor;
+      }
+    } else if (temp2->info > node->info) {
       predecessor = node;
       node = node->next;
-    }
+    } else {
+      otherList.listData = otherList.listData->next;
+      otherList.Length--;
+      delete temp2;
+    } 
+  }
+  
+  if (otherList.listData != NULL && isEmpty() == false) {
+    predecessor->next = otherList.listData;
+    Length += otherList.Length;
+    otherList.listData = NULL;
+    otherList.Length = 0;
+  } else if (otherList.listData != NULL && isEmpty()) {
+    listData = otherList.listData;
+    Length += otherList.Length;
+    otherList.listData = NULL;
+    otherList.Length = 0;
   }
 } 
 

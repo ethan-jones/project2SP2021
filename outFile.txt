@@ -51,3 +51,37 @@ Testing getLenth():
 0
 Testing deleteItem(90):
 List is empty. EmtpyList exception thrown.
+Testing putItem(7):
+Testing putItem(6):
+Testing putItem(5):
+Printing the list:
+5->6->7->NULL
+TESTING MERGE:
+Test case 1: Merging two empty lists
+Expected output: Both lists are empty
+list1 after merge: NULLlist2 after merge: NULL
+Test case 2: merging the empty list with 10->20->30->40 
+expected output 10 -> 20 -> 30 -> 40
+Actual output:
+List1 after the merge
+10->20->30->40->NULLList2 after the merge, Expected empty.
+NULL
+Test case 3: Output of merging 10->20->30->40 with an empty list 
+expected output 10-> 20 -> 30 -> 40
+Actual output:
+list after the merge
+10->20->30->40->NULLOther list after the merge, Expected empty.
+other list Actual
+NULL
+Test case 4: Output of merging two lists 20->40->50 WITH 10->30->60->70
+expected output 10->20->30->40->50->60->70->NULL
+Actual output:
+List after the merge
+10->20->30->40->50->60->70->NULLOther list after the merge, expected empty
+NULL
+Test case 5: Remove Duplicates test, Output of merging two lists 20->40->50 WITH 10->20->30->40->50
+expected output 10->20->30->40->50->NULL
+Actual output:
+List after the merge
+10->20->30->40->50->NULLOther list after the merge
+NULL
