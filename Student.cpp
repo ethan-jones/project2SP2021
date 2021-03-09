@@ -25,26 +25,25 @@ void Student::setName(string newName) {
 void Student::setID(int newID) {
   id = newID;
 }
-/*
-bool Student::operator==(const Student& y) {
-  if (id == y.id) {
-    return true;
-  }
   return false;
+}
+bool operator != (const Student &s2)
+{
+  return id == s2.id;
+}
+bool operator == (const Student &s2)
+{
+  return id == s2.id;
+}
+//operator < to check if the id of this object is less than s2.id
+bool operator < (const Student &s2)
+{
+  return id < s2.id;
 }
 
-bool Student::operator>(const Student& y) {
-  if (id > y.id) {
-    return true;
-  }
-  return false;
+//operator > to check if the id of this object is greater than s2.id
+bool operator > (const Student &s2)
+{
+  return id > s2.id;
 }
-
-bool Student::operator<(const Student& y) {
-  if (id < y.id) {
-    return true;
-  }
-  return false;
-}
-*/
 
